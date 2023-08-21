@@ -69,7 +69,10 @@ class Map:
     def generate_hospital(self):
         c = randcell(self.w, self.h)
         cx, cy = c[0], c[1]
-        self.cells[cx][cy] = 3
+        if self.cells[cx][cy] != 4:
+            self.cells[cx][cy] = 3
+        else:
+            self.generate_hospital()    
              
     def add_fire(self):
         c = randcell(self.w, self.h)

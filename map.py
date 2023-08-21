@@ -4,6 +4,7 @@ from utils import randbool, randcell, randcell2
 CELL_TYPES = '🟩🌳🟦🆘🏪🔥'
 TREE_BONUS = 100
 UPGRADE_COST = 500
+LIFE_COST = 1000
 
 class Map:
     def __init__(self, w, h):
@@ -15,6 +16,7 @@ class Map:
         self.generate_river(10)
         self.generate_river(10)
         self.generate_upgrade_shop()
+        self.generate_hospital()
         
     def check_bounds(self, x, y):
         if x < 0 or y < 0 or x >= self.h or y >= self.w:
@@ -58,13 +60,17 @@ class Map:
         cx, cy = c[0], c[1]
         if (self.cells[cx][cy]==0):
             self.cells[cx][cy] = 1 
-            
+                
     def generate_upgrade_shop(self):
         c = randcell(self.w, self.h)
         cx, cy = c[0], c[1]
         self.cells[cx][cy] = 4                       
                     
-        
+    def generate_hospital(self):
+        c = randcell(self.w, self.h)
+        cx, cy = c[0], c[1]
+        self.cells[cx][cy] = 3
+             
     def add_fire(self):
         c = randcell(self.w, self.h)
         cx, cy = c[0], c[1]
@@ -91,7 +97,9 @@ class Map:
         if (c == 4 and helico.score >= UPGRADE_COST):
             helico.mxtank += 1
             helico.score -= UPGRADE_COST        
-
+        if (c == 3 and helico.score >= LIFE_COST):
+            helico.lives += 1
+            helico.score -= LIFE_COST
                       
 
     

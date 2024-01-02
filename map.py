@@ -19,6 +19,7 @@ class Map:
         self.generate_river(10)
         self.generate_upgrade_shop()
         self.generate_hospital()
+        
                 
     def check_bounds(self, x, y):
         if x < 0 or y < 0 or x >= self.h or y >= self.w:

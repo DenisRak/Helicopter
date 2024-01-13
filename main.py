@@ -44,4 +44,4 @@ while True:
     if (tick % TREE_UPDATE == 0):
         field.generate_tree()
     if (tick % FIRE_UPDATE == 0):
-        field.update_fires()    
+        field.update_fires()   

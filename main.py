@@ -14,13 +14,16 @@ field = Map(MAP_W, MAP_H)
 
 helico = Helico(MAP_W, MAP_H)
 
-MOVES = {'w': (-1,0), 'd': (0,1), 's': (1,0), 'a': (0,-1)}
+MOVES = {'w': (-1, 0), 'd': (0, 1), 's': (1, 0), 'a': (0, -1)}
+
+
 def process_key(key):
     global helico
     c = key.char.lower()
     if c in MOVES.keys():
         dx, dy = MOVES[c][0], MOVES[c][1]
         helico.move(dx, dy)
+        
         
 listener = keyboard.Listener(        
     on_press=process_key,
